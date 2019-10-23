@@ -1,0 +1,62 @@
+Scanner reader=new Scanner(System.in);     
+        
+        System.out.println("请输入题目数量：");
+        int n=reader.nextInt();           //输入题目数量
+        System.out.println("操作数是否含负数:1.包含   2.不包含");
+        int c=reader.nextInt();           //输入1或2是否包含负数
+        System.out.println("操作数是100以内还是1000以内：1.100   2.1000");
+        int b=reader.nextInt();           //输入1或2选择100以内还是1000以内
+        System.out.println("是否包含乘法和除法：1.包括      2.不包括");
+        int a=reader.nextInt();           //输入1或2选择是否包含乘法或除法
+        if(b==1){                                             //用户选择100以内的操作数
+                  int ran1=r.nextInt(100);            
+                    int ran2=r.nextInt(100);
+                if(a==1){                             //用户选择包含乘法或除法
+                    int k=(int)(Math.random()*4);     //生成随机运算符
+                    if(k==1){                         //加法运算符
+                         sum=ran1+ran2;
+                         System.out.println(ran1+"+"+ran2+"=");
+                         
+                    }
+                    if(k==2){                         //减法运算符
+                        sum=ran1-ran2;
+                        System.out.println(ran1+"-"+ran2+"=");
+                        
+                    }
+                    if(k==3){                          //乘法运算符
+                        sum=ran1*ran2;
+                        System.out.println(ran1+"*"+ran2+"=");
+                        
+                    }
+                    if(k==4){                         //除法运算符
+                        sum=ran1/ran2;
+                        System.out.println(ran1+"/"+ran2+"=");
+                        
+                    }
+                }
+                FileWriter fw = null;                            //创建
+     BufferedWriter bufw = null;
+        try {
+            fw = new FileWriter("D:\\result.txt");  //文件位置
+            bufw = new BufferedWriter(fw);
+            for(int i =0;i<n;i++) {               //写入信息
+                switch(i) {
+                case 0:bufw.write("第"+(int)(i+1)+"题:"+new String(x+"+"+y+"="+sum));bufw.newLine();break;
+                case 1:bufw.write("第"+(int)(i+1)+"题:"+new String(x+"-"+y+"="+sum));bufw.newLine();break;
+                case 2:bufw.write("第"+(int)(i+1)+"题:"+new String(x+"*"+y+"="+sum));bufw.newLine();break;
+                case 3:bufw.write("第"+(int)(i+1)+"题:"+new String(x+"/"+y+"="+sum));bufw.newLine();break;
+                }
+            }
+        }catch(IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                if(bufw!=null) {        //关闭
+                    bufw.close();
+                }
+            }catch(IOException e) {
+                e.printStackTrace();
+            }
+        }
+    
